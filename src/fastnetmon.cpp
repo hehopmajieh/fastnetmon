@@ -2330,10 +2330,11 @@ void traffic_draw_programm() {
         sorter = PACKETS;
     }
 
-    output_buffer << "FastNetMon " << fastnetmon_version
+/*    output_buffer << "FastNetMon " << fastnetmon_version
                   << " Pavel Odintsov: stableit.ru"
-                  << "\n"
-                  << "IPs ordered by: " << sort_parameter << "\n";
+                  << "\n"*
+		  << "IPs ordered by: " << sort_parameter << "\n";
+		*/
 
     output_buffer << print_channel_speed("Incoming traffic", INCOMING) << std::endl;
 
@@ -2348,15 +2349,15 @@ void traffic_draw_programm() {
         output_buffer << draw_table(OUTGOING, false, sorter);
         output_buffer << std::endl;
     }
-
+/*
     output_buffer << print_channel_speed("Internal traffic", INTERNAL) << std::endl;
 
     output_buffer << std::endl;
-
+*/
     output_buffer << print_channel_speed("Other traffic", OTHER) << std::endl;
 
     output_buffer << std::endl;
-
+/*
     // Application statistics
     output_buffer << "Screen updated in:\t\t" << drawing_thread_execution_time.tv_sec << " sec "
                   << drawing_thread_execution_time.tv_usec << " microseconds\n";
@@ -2367,13 +2368,13 @@ void traffic_draw_programm() {
     if (speed_calculation_time.tv_sec > 0) {
         output_buffer << "ALERT! Toolkit working incorrectly! We should calculate speed in ~1 second\n";
     }
-
+*/
 #ifdef IPV6_HASH_COUNTERS
-    output_buffer << "Total amount of IPv6 packets: " << total_ipv6_packets << "\n";
+  //  output_buffer << "Total amount of IPv6 packets: " << total_ipv6_packets << "\n";
 #endif
 
-    output_buffer << "Total amount of IPv6 packets related to our own network: " << our_ipv6_packets << "\n";
-    output_buffer << "Not processed packets: " << total_unparsed_packets_speed << " pps\n";
+    //output_buffer << "Total amount of IPv6 packets related to our own network: " << our_ipv6_packets << "\n";
+    //output_buffer << "Not processed packets: " << total_unparsed_packets_speed << " pps\n";
 
     // Print backend stats
     if (enable_pcap_collection) {
@@ -2395,12 +2396,12 @@ void traffic_draw_programm() {
         output_buffer << std::endl << "Ban list:" << std::endl;
         output_buffer << print_ddos_attack_details();
     }
-
+/*
     if (enable_subnet_counters) {
         output_buffer << std::endl << "Subnet load:" << std::endl;
         output_buffer << print_subnet_load() << "\n";
     }
-
+*/
     screen_data_stats = output_buffer.str();
 
     // Print screen contents into file
